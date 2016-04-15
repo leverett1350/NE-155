@@ -30,11 +30,15 @@ RelErrorCol = max(max(RelError));
         xnew = (inv(D+w*L))*(((1-w)*D-w*U)*x0 +w*b);
         RelError = (abs(xnew-x0))/(abs(xnew));
         RelErrorCol = max(max(RelError));
+        Error = abs(norm(xnew-x0));
         x0 = xnew;
         count = count+1;
         xtable = [xtable, xnew];
     end
-%    disp(xtable);
-    x = xnew;
     i = count;
+%   Error = abs(norm(xtable(i)-xtable(i-1)));
+%   disp(xtable);
+    disp(Error(end))
+    disp(RelErrorCol(end))
+    x = xnew;
 end
